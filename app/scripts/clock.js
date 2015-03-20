@@ -6,56 +6,7 @@ var Clock = function(options) {
   this.minutesArc = options.minutesArc;
   this.hoursArc = options.hoursArc;
   this.container = options.container;
-
   this.seconds = 0;
-
-  d3
-    .select(options.container)
-    .attr('width', options.width)
-    .attr('height', options.height)
-    .append('g')
-    .attr("transform", "translate(" + options.width / 2 + "," + options.height / 2 + ")");
-
-  d3
-    .select(options.container)
-    .select('g')
-    .append('text')
-    .attr('text-anchor', 'middle');
-
-  d3
-    .select(options.container)
-    .select('g')
-    .select('text')
-    .append('tspan')
-    .attr('id', 'hours-text');
-
-  d3
-    .select(options.container)
-    .select('g')
-    .select('text')
-    .append('tspan')
-    .text(':');
-
-  d3
-    .select(options.container)
-    .select('g')
-    .select('text')
-    .append('tspan')
-    .attr('id', 'minutes-text');
-
-  d3
-    .select(options.container)
-    .select('g')
-    .select('text')
-    .append('tspan')
-    .text(':');
-
-  d3
-    .select(options.container)
-    .select('g')
-    .select('text')
-    .append('tspan')
-    .attr('id', 'seconds-text');
 };
 
 Clock.percentSeconds = function(seconds) {
@@ -90,6 +41,56 @@ Clock.leadingZeros = function(num) {
   return sNum;
 }
 
+Clock.prototype.init = function() {
+  d3
+    .select(this.container)
+    .attr('width', this.width)
+    .attr('height', this.height)
+    .append('g')
+    .attr("transform", "translate(" + this.width / 2 + "," + this.height / 2 + ")");
+
+  d3
+    .select(this.container)
+    .select('g')
+    .append('text')
+    .attr('text-anchor', 'middle');
+
+  d3
+    .select(this.container)
+    .select('g')
+    .select('text')
+    .append('tspan')
+    .attr('id', 'hours-text');
+
+  d3
+    .select(this.container)
+    .select('g')
+    .select('text')
+    .append('tspan')
+    .text(':');
+
+  d3
+    .select(this.container)
+    .select('g')
+    .select('text')
+    .append('tspan')
+    .attr('id', 'minutes-text');
+
+  d3
+    .select(this.container)
+    .select('g')
+    .select('text')
+    .append('tspan')
+    .text(':');
+
+  d3
+    .select(this.container)
+    .select('g')
+    .select('text')
+    .append('tspan')
+    .attr('id', 'seconds-text');
+};
+
 Clock.prototype.render = function() {
   this.secondsArc.update(Clock.percentSeconds(this.seconds));
   this.minutesArc.update(Clock.percentMinutes(this.seconds));
@@ -123,6 +124,7 @@ Clock.currentSeconds = function() {
 
 Clock.prototype.start = function() {
   this.seconds = Clock.currentSeconds();
+  this.init();
   this.innerArc.render();
   this.secondsArc.render();
   this.minutesArc.render();
