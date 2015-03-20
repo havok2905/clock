@@ -1,0 +1,37 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  margin: 30px 0 20px 0;
+  text-align: center;
+  font-size: 70px;
+  color: #666666;
+}
+
+#clock {
+  margin: 20px auto 0 auto;
+  display: block;
+}
+
+#clock text{
+  font-size: 50px;
+  font-weight: 600;
+  fill: #666666;
+}
+
+#inner {
+  fill: #DDDDDD;
+}
+
+#seconds {
+  fill: #ADC6D5;
+}
+
+#minutes {
+  fill: #45B9BA;
+}
+
+#hours {
+  fill: #293D42;
+}
