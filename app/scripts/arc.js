@@ -6,13 +6,6 @@ var Arc = function(options) {
   this.transition = options.transition;
   this.name = options.name;
   this.container = options.container;
-
-  this.obj = d3
-               .svg
-               .arc()
-               .innerRadius(this.inner)
-               .outerRadius(this.outer)
-               .startAngle(this.start);
 };
 
 // http://tauday.com/tau-manifesto
@@ -52,6 +45,13 @@ Arc.prototype.tween = function(transition, newAngle) {
 };
 
 Arc.prototype.render = function() {
+  this.obj = d3
+             .svg
+             .arc()
+             .innerRadius(this.inner)
+             .outerRadius(this.outer)
+             .startAngle(this.start);
+
   d3
     .select(this.container)
     .select('g')
