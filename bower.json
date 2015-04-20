@@ -15,6 +15,6 @@
     "tests"
   ],
   "dependencies": {
-    "d3": "~3.5.5"
+    "cs-d3": "git@github.com:havok2905/csd3.git"
   }
 }
